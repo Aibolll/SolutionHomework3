@@ -2,7 +2,6 @@ package ImplementationAssignment2;
 
 public class MUDPrototypeDemo {
     public static void main(String[] args) {
-        
         Room originalRoom = new Room("Throne Room", "A majestic hall with a golden throne.");
         NPC originalNPC = new NPC("Skeleton Warrior", "An undead soldier guarding the dungeon.", 100);
 
@@ -21,6 +20,5 @@ public class MUDPrototypeDemo {
         System.out.println("\nAfter modifying clones:");
         System.out.println("Cloned Room: " + clonedRoom);
         System.out.println("Cloned NPC: " + clonedNPC);
-        
     }
 }
