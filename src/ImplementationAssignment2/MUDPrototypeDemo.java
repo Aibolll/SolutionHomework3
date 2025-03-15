@@ -1,23 +1,24 @@
+package ImplementationAssignment2;
+
 public class MUDPrototypeDemo {
     public static void main(String[] args) {
-        
-        Room throneRoom = new Room("Throne Room", "A majestic hall with a golden throne.");
-        NPC skeletonWarrior = new NPC("Skeleton Warrior", "An undead soldier guarding the dungeon.", 100);
+        Room originalRoom = new Room("Throne Room", "A majestic hall with a golden throne.");
+        NPC originalNPC = new NPC("Skeleton Warrior", "An undead soldier guarding the dungeon.", 100);
 
-        Room copiedRoom = throneRoom.clone();
-        NPC copiedNPC = skeletonWarrior.clone();
-        
-        System.out.println("Original and Cloned Entities:");
-        System.out.println("Room: " + throneRoom);
-        System.out.println("Cloned Room: " + copiedRoom);
-        System.out.println("NPC: " + skeletonWarrior);
-        System.out.println("Cloned NPC: " + copiedNPC);
-        
-        copiedRoom.setDescription("A dusty old chamber with mysterious carvings.");
-        copiedNPC.setHealth(80);
-        
-        System.out.println("\nAfter modifications:");
-        System.out.println("Updated Cloned Room: " + copiedRoom);
-        System.out.println("Updated Cloned NPC: " + copiedNPC);
+        Room clonedRoom = (Room) originalRoom.cloneEntity();
+        NPC clonedNPC = (NPC) originalNPC.cloneEntity();
+
+        System.out.println("Original Room: " + originalRoom);
+        System.out.println("Cloned Room: " + clonedRoom);
+        System.out.println();
+        System.out.println("Original NPC: " + originalNPC);
+        System.out.println("Cloned NPC: " + clonedNPC);
+
+        clonedRoom = new Room(clonedRoom.getName() + " (Clone)", clonedRoom.getDescription());
+        clonedNPC = new NPC(clonedNPC.getName() + " (Clone)", clonedNPC.getDescription(), clonedNPC.getHealth() - 20);
+
+        System.out.println("\nAfter modifying clones:");
+        System.out.println("Cloned Room: " + clonedRoom);
+        System.out.println("Cloned NPC: " + clonedNPC);
     }
 }
