@@ -1,11 +1,17 @@
 package BuilderAssignment1;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class SimpleDungeonBuilder implements IDungeonBuilder {
     private String name;
-    private List<Room> rooms = new ArrayList<>();
-    private List<NPC> npcs = new ArrayList<>();
+    private final List<Room> rooms;
+    private final List<NPC> npcs;
+
+    public SimpleDungeonBuilder() {
+        this.rooms = new ArrayList<>();
+        this.npcs = new ArrayList<>();
+    }
 
     @Override
     public IDungeonBuilder setDungeonName(String name) {
@@ -15,18 +21,23 @@ public class SimpleDungeonBuilder implements IDungeonBuilder {
 
     @Override
     public IDungeonBuilder addRoom(Room room) {
-        rooms.add(room);
+        if (room != null) {
+            rooms.add(room);
+        }
         return this;
     }
 
     @Override
     public IDungeonBuilder addNPC(NPC npc) {
-        npcs.add(npc);
+        if (npc != null) {
+            npcs.add(npc);
+        }
         return this;
     }
 
     @Override
     public Dungeon build() {
-        return new Dungeon(name, rooms);
+        return new Dungeon(name, new ArrayList<>(rooms));
     }
 }
+
